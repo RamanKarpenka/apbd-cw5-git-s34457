@@ -34,3 +34,4 @@ C:\Users\User\OneDrive\Desktop\APBD\5\zadanie_refactoring_renewal\LegacyRenewalA
 C:\Users\User\OneDrive\Desktop\APBD\5\zadanie_refactoring_renewal\LegacyRenewalAppConsumer\obj\Debug\net8.0\LegacyRenewalAppConsumer.pdb
 C:\Users\User\OneDrive\Desktop\APBD\5\zadanie_refactoring_renewal\LegacyRenewalAppConsumer\obj\Debug\net8.0\LegacyRenewalAppConsumer.genruntimeconfig.cache
 C:\Users\User\OneDrive\Desktop\APBD\5\zadanie_refactoring_renewal\LegacyRenewalAppConsumer\obj\Debug\net8.0\ref\LegacyRenewalAppConsumer.dll
+C:\Users\User\OneDrive\Desktop\APBD\5\zadanie_refactoring_renewal\LegacyRenewalAppConsumer\obj\Debug\net8.0\LegacyRenewalAppConsumer.sourcelink.json

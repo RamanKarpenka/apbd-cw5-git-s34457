@@ -1,59 +1,14 @@
-# refactoring-renewal-example
+## Refaktoryzacja
 
-W tym zadaniu Waszym celem jest refaktoryzacja kodu aplikacji nazwanej `LegacyRenewalApp`.
+W ramach zadania przeprowadziłem refaktoryzację aplikacji LegacyRenewalApp, zachowując istniejącą funkcjonalność oraz publiczny kontrakt wykorzystywany przez projekt kliencki.
 
-Zakładamy, że aplikacja działa poprawnie biznesowo i nie poprawiacie jej funkcjonalności. Waszym zadaniem jest wyłącznie poprawa jakości kodu.
+### Co zostało zrealizowane:
 
-Projekt `LegacyRenewalAppConsumer` pełni rolę kodu klienckiego. Tego projektu nie wolno modyfikować. Kod w projekcie `LegacyRenewalApp` może być modyfikowany tak długo, jak długo nie psujecie publicznego kontraktu wykorzystywanego przez `LegacyRenewalAppConsumer`.
+- Podzieliłem odpowiedzialności w klasie SubscriptionRenewalService zgodnie z zasadą SRP
+- Wydzieliłem logikę biznesową do osobnych klas w warstwie Domain (np. obliczanie podatku, opłat i rabatów)
+- Zastąpiłem rozbudowane instrukcje if-else wzorcem strategii (Discount Strategies), zgodnie z Open/Closed Principle
+- Ograniczyłem sprzężenie poprzez wprowadzenie abstrakcji IBillingGateway i opakowanie klasy LegacyBillingGateway
+- Wprowadziłem prosty mechanizm wstrzykiwania zależności (Dependency Injection)
+- Poprawiłem czytelność, testowalność oraz rozszerzalność kodu
 
-Dodatkowo nie wolno modyfikować klasy `LegacyBillingGateway`. Zakładamy, że jest to zewnętrzna, statyczna klasa pochodząca ze starej biblioteki. Jeśli chcecie ograniczyć sprzężenie z nią, musicie ją opakować we własną abstrakcję.
-
-## Cel zadania
-
-To zadanie ma sprawdzić zrozumienie:
-
-- DRY,
-- zasad SOLID,
-- kohezji,
-- coupling,
-- bezpiecznego refaktoryzowania działającego kodu.
-
-## Co jest problemem w obecnym kodzie
-
-Klasa `SubscriptionRenewalService` zawiera jedną długą metodę, która miesza wiele odpowiedzialności:
-
-- walidację danych wejściowych,
-- pobieranie danych z repozytoriów,
-- logikę biznesową związaną z rabatami,
-- logikę opłat dodatkowych,
-- logikę podatkową,
-- budowanie obiektu faktury,
-- zapis faktury,
-- wysyłkę wiadomości e-mail.
-
-Dodatkowo w kodzie występują:
-
-- rozbudowane bloki `if-else`,
-- bezpośrednie tworzenie zależności wewnątrz serwisu,
-- bezpośrednie użycie statycznej klasy zewnętrznej,
-- logika, którą można później przenieść do osobnych klas lub serwisów domenowych.
-
-## Oczekiwania wobec refaktoryzacji
-
-Student powinien:
-
-- ładnie podzielić kod na odpowiedzialności,
-- poprawić kohezję klas,
-- zmniejszyć coupling,
-- usunąć powtórzenia,
-- wydzielić fragmenty logiki do osobnych klas,
-- rozważyć rozbicie części `if-else` na interfejsy i implementacje zgodnie z Open/Closed Principle,
-- ograniczyć bezpośrednie zależności przez wprowadzenie abstrakcji i prostego IoC przez wstrzykiwanie zależności,
-- opakować `LegacyBillingGateway` we własną klasę lub interfejs bez modyfikowania samej klasy statycznej.
-
-## Ważne ograniczenia
-
-- Nie zmieniaj kodu w `LegacyRenewalAppConsumer`.
-- Nie zmieniaj klasy `LegacyBillingGateway`.
-- Zachowaj publiczny kontrakt wykorzystywany przez kod kliencki.
-- Zakładamy, że obecna logika działa poprawnie. Refaktoryzacja ma poprawić jakość kodu, a nie zmienić wynik działania z perspektywy klienta.
+Refaktoryzacja nie zmienia zachowania systemu — wyniki działania pozostają takie same jak przed zmianami.
